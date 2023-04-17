@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1" >
+<head>
+  <meta charset="UTF-8">
+  <title>Form Patients</title>
+  <link rel="stylesheet" href="webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment="~{content1}">
+    <div class="p-3">
+    <form method="post" th:action="@{savePatient}">
+
+        <div class="mb-3 mt-3">
+            <Label for="id" class="form-label">ID: </Label>
+            <Label for="id" th:text="${patient.id}"></Label>
+            <input id="id" class="form-control" type="hidden" name="nom" th:value="${patient.id}">
+        </div>
+      <div class="mb-3 mt-3">
+        <Label for="nom" class="form-label">Nom</Label>
+        <input id="nom" class="form-control" type="text" name="nom" th:value="${patient.nom}">
+        <span class="text-danger" th:errors="${patient.nom}"></span>
+  </div>
+      <div class="mb-3">
+        <Label for="dateNaissance" class="form-label">Date Naissance</Label>
+        <input class="form-control" type="date" id="dateNaissance" name="dateNaissance" placeholder="Date Naissance" th:value="${patient.dateNaissance}">
+        <span class="text-danger" th:errors="${patient.dateNaissance}"></span>
+      </div>
+      <div class="form-check mb-3">
+        <Label class="form-check-label"></Label>
+        <input class="form-check-input" type="checkbox" name="malade" th:checked="${patient.malade}">Malade
+
+      </div>
+      <div class="mb-3 mt-3">
+        <Label for="score" class="form-label">Score</Label>
+        <input class="form-control" id="score" type="text" name="score" th:value="${patient.score}">
+
+      </div>
+      <button type="submit" class="btn btn-primary"> Save </button>
+
+    </form>
+</div>
+</div>
+</body>
+</html>
